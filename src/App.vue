@@ -1,18 +1,37 @@
 <template>
   <div id="app">
-    <Input/>
-    <Card/>
+    <Input
+      v-on:add-card-event="addCardItem" 
+    />
+    <Cards
+      v-bind:cards="cards"   
+    />
   </div>
 </template>
 
 <script>
 import Input from './components/Input.vue'
-import Card from './components/Card.vue'
+import Cards from './components/Cards.vue'
 export default {
   name: 'App',
   components: {
     Input,
-    Card
+    Cards
+  },
+  data() {
+    return {
+      cards: [],
+      editCard: {
+        question:'',
+        answer:'',
+        id: '',
+      }
+    }
+  },
+  methods: {
+    addCardItem(newCard){
+        this.cards = [...this.cards, newCard];
+    }
   }
 }
 </script>

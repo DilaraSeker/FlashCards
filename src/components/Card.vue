@@ -2,7 +2,7 @@
   <div>  
     <v-card class="mx-auto" max-width="344">
       <v-card-title>
-       QUESTION
+        {{card.question}}
       </v-card-title>
 
       <v-card-actions>
@@ -20,12 +20,12 @@
         <div v-show="show">
           <v-divider/>
           <v-card-text>
-            ANSWER
+            {{card.answer}}
           </v-card-text>
         </div>
       </v-expand-transition>
 
-      <v-btn variant="primary" >Edit</v-btn >
+      <v-btn class="btn" variant="primary">Edit</v-btn >
       <v-btn variant="primary">Delete</v-btn >
        <v-icon>fas fa-edit</v-icon>
   
@@ -37,7 +37,7 @@
 <script>
   export default {
     name:'Card',
-   
+    props: ["card"],
     data(){
       return{
         show: false,
@@ -46,6 +46,8 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+  .btn {
+    margin-right: 80px;
+  }
 </style>
