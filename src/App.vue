@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <Input/>
+    <Card/>
   </div>
 </template>
 
 <script>
 import Input from './components/Input.vue'
-
+import Card from './components/Card.vue'
 export default {
   name: 'App',
   components: {
-    Input
+    Input,
+    Card
   }
 }
 </script>
