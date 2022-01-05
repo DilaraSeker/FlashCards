@@ -1,16 +1,13 @@
 <template>
   <div>  
-    <v-card class="mx-auto" max-width="344">
+    <v-card class="mx-auto" width="344" >
       <v-card-title>
         {{card.question}}
       </v-card-title>
 
       <v-card-actions>
-        <v-btn color="orange lighten-2" text >
-          Explore
-        </v-btn>
+        <v-btn color="orange lighten-2" text />
         <v-spacer></v-spacer>
-  
         <v-btn icon @click="show = !show">
           <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
         </v-btn>
@@ -25,10 +22,9 @@
         </div>
       </v-expand-transition>
 
-      <v-btn class="btn" variant="primary">Edit</v-btn >
-      <v-btn variant="primary">Delete</v-btn >
-       <v-icon>fas fa-edit</v-icon>
-  
+      <v-btn class="btn" variant="primary" @click="$emit('edit-card-item', card.id)">Edit</v-btn >
+      <v-btn variant="primary" @click="$emit('delete-card-item', card.id)">Delete</v-btn >
+      <br><br>
     </v-card>
     <br>
  </div>

@@ -29,6 +29,7 @@
 <script>
   export default {
     name:'Input',
+    props: ['editCard'],
     data(){
       return{
         question:'',
@@ -51,10 +52,48 @@
           }
           this.question = ''
           this.answer = ''
+        }else{
+          //edit card
+          const cardItem = {
+            question: this.question,
+            answer: this.answer,
+            id: this.id
+          };
+          //send to parent 
+          this.$emit('edit-card-event', cardItem);
+          //clear input field
+          this.question = '';
+          this.answer= '',
+          this.edit = false;
         }
       }
     },
-    
+    watch: {
+      editCard:{
+        handler() {
+          this.question = this.editCard.question;
+          this.answer = this.editCard.answer;
+          this.id = this.editCard.id;
+          this.edit = true
+        },
+        deep: true
+      },
+      question:{
+        handler(){
+          if(this.question === ''){
+            this.edit = false;
+          }
+        }
+      },
+      answer:{
+        handler(){
+          if(this.answer === ''){
+            this.edit = false;
+          }
+        }
+      }
+    } 
+ 
   }
 </script>
 

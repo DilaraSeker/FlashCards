@@ -1,11 +1,19 @@
 <template>
   <div>
     <h1>Question List</h1>
-    <div v-bind:key="card.id" v-for="card in cards">
-      <Card  
-        v-bind:card="card" 
-      />        
-    </div>
+    <v-row dense>
+      <v-col
+        v-for="card in cards"
+        :key="card.title"
+        :cols="card.flex"
+      >
+        <Card  
+          v-bind:card="card" 
+          v-on:edit-card-item="editCardMethod" 
+          v-on:delete-card-item="deleteCardMethod" 
+        />         
+      </v-col>
+    </v-row>
     <div v-if="!cards.length">
       <h1>No Cards!</h1>
     </div>
@@ -21,6 +29,15 @@
     components: {
       Card
     },
-    
+    methods: {
+      editCardMethod(id){
+        //send to parent (App.vue)
+        this.$emit('edit-card-event', id)
+      },
+      deleteCardMethod(id){
+        //send to parent
+        this.$emit('delete-card-event', id);
+      }
+    }
   }
 </script>
