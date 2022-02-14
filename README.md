@@ -1,4 +1,5 @@
-# flash-cards
+# Flash Cards
+Two input boxes, one for question and one for answer. After submitting the form, a card will be added to the list with title as question. On clicking to the card, answer will be revealed. On another click to revelaed card, answer will be hidden.
 
 ## Project setup
 ```
